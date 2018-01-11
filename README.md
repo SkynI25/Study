@@ -14,3 +14,7 @@ In python, how to check the list data type is empty or not?
 In python, about operator overloading
 
 http://blog.eairship.kr/287
+
+one of the way to store file path to DB
+
+https://stackoverflow.com/questions/20208878/storing-images-in-server-using-expressjs
