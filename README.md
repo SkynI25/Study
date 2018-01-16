@@ -112,6 +112,14 @@ http://damduc.tistory.com/4
 
 http://ourcstory.tistory.com/45
 
-Useful code for developing Node.js
+Useful code for developing Node.js :
 
 http://blog.kichul.co.kr/2017/01/27/2017-03-27-node-js-notes/
+
+HTML Table in Jade Templatee :
+
+https://stackoverflow.com/questions/28187290/how-rotate-html-table-using-jade-template-node-express-jade
+
+MySQL 테이블 생성시 DATETIME 타입에 DEFAULT로 현재 시간 입력하기 :
+
+http://jsonobject.tistory.com/122
