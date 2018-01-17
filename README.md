@@ -123,3 +123,8 @@ https://stackoverflow.com/questions/28187290/how-rotate-html-table-using-jade-te
 MySQL 테이블 생성시 DATETIME 타입에 DEFAULT로 현재 시간 입력하기 :
 
 http://jsonobject.tistory.com/122
+
+Useful Homepage UI stuff :
+
+https://semantic-ui.com/modules/dropdown.html#search-dropdown
+https://dribbble.com/tags/search_bar
