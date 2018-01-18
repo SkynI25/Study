@@ -143,3 +143,7 @@ view2의 form에서 'data/list'로 post 방식으로 자료를 보내주고
 app.post('/data/list')로 데이터를 받아 입력한 자료를 받아 select * from hana where=?
 
 로 치환자의 값으로 form 에서 보낸 데이터를 받아 select 검색이 되도록 하였다.
+
+Display Calendar by using jQuery :
+
+http://www.nextree.co.kr/p9887/
