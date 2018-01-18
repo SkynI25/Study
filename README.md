@@ -127,3 +127,19 @@ http://jsonobject.tistory.com/122
 Useful Homepage UI stuff :
 
 https://semantic-ui.com/modules/dropdown.html#search-dropdown
+
+어제와 오늘 헤매다가 해결한 것들 정리(20180118)
+
+어제는 이미지를 클릭했을 때 그 이미지를 띄우지 못해서 애를 먹었다
+
+이는 app.use(express.static('./')); 에서 기본 경로를 ./(현재 디렉토리)로 설정하면서 해결하였다.
+
+그리고 검색한 자료를 띄우기 에서는
+
+redirect 를 사용하지 않고 검색한 자료로 view2로 render 하여 띄워주었다.
+
+view2의 form에서 'data/list'로 post 방식으로 자료를 보내주고
+
+app.post('/data/list')로 데이터를 받아 입력한 자료를 받아 select * from hana where=?
+
+로 치환자의 값으로 form 에서 보낸 데이터를 받아 select 검색이 되도록 하였다.
