@@ -127,4 +127,3 @@ http://jsonobject.tistory.com/122
 Useful Homepage UI stuff :
 
 https://semantic-ui.com/modules/dropdown.html#search-dropdown
-https://dribbble.com/tags/search_bar
