@@ -147,3 +147,16 @@ app.post('/data/list')로 데이터를 받아 입력한 자료를 받아 select 
 Display Calendar by using jQuery :
 
 http://www.nextree.co.kr/p9887/
+
+To hide element in HTML :
+
+<table>
+  <tr><th>Test Table</th><tr>
+  <tbody style="display:none">
+    <tr><td>123456789</td><tr>
+    <tr><td>123456789</td><tr>
+    <tr><td>123456789</td><tr>
+  </tbody>
+</table>
+
+https://stackoverflow.com/questions/6910349/hiding-table-data-using-div-style-displaynone
