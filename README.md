@@ -160,3 +160,9 @@ To hide element in HTML :
 </table>
 
 https://stackoverflow.com/questions/6910349/hiding-table-data-using-div-style-displaynone
+
+how to install Ubuntu using USB :
+
+http://sergeswin.com/1178
+
+https://medium.com/ics-lab/%EC%9A%B0%EB%B6%84%ED%88%AC-ubuntu-%EB%A1%9C-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0-1-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-%EB%93%80%EC%96%BC%EB%B6%80%ED%8C%85-9964f088c9ac
