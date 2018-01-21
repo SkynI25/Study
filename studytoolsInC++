@@ -1,0 +1,28 @@
+printf로 출력할 때의 서식 :
+
+http://shaeod.tistory.com/283
+
+비주얼스튜디오 코드 재 정렬 :
+
+Ctrl + K, F
+
+atoi(), itoa() 함수에 관련한 정보 :
+
+http://norux.me/24
+
+int to string :
+
+https://stackoverflow.com/questions/5590381/easiest-way-to-convert-int-to-string-in-c
+
+difference between char s[] and char *s
+
+https://stackoverflow.com/questions/1704407/what-is-the-difference-between-char-s-and-char-s
+
+std::string을 const char* 나 char*로 바꾸는 방법
+
+http://hashcode.co.kr/questions/88/stdstring%EC%9D%84-const-char%EB%82%98-char%EB%A1%9C-%EB%B0%94%EA%BE%B8%EB%8A%94-%EB%B0%A9%EB%B2%95
+
+sizeof를 이용하여 배열을 크기 만큼 출력하는 방법
+
+for(int i=0; i<sizeof(arr)/sizeof(int); i++) 과 같이 sizeof를 배열 앞에 cast 해주고 이를 다시 sizeof(int)로 나눠준다.
+이때 arr는 int형 배열이다.
