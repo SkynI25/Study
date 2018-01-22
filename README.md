@@ -184,7 +184,15 @@ http://www.daterangepicker.com/
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D
 
 var time = req.body.time;
-var dates = time.match(new RegExp("\\d*-\\d*-\\d*", "g"));
+var dates = time.match(new RegExp("\\d*-\\d*-\\d*", "g")); <!-- RegExp는 정규표현식 객체이다 --> 
+
+d 는 숫자 문자를 일컫으며 *은 0이상 연속으로 반복되는 앞선 문자를 찾게 해준다.
+
+g 는 Global로 'g' 를 사용하지 않으면 일치하는 것 하나만 찾아주고 끝나지만 g를 해줌으로써 일치하는 모든 것을 찾게 된다.
+
+* 사용에 대한 예로써
+
+"aaa".match(RegExp("a*", "g")) 의 결과값은 0 이상이므로 null, ('aaa') 가 나오게 된다.
 
 body 값의 time에 input 박스안에 있는 값들이 날려오고
 
