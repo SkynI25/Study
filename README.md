@@ -202,6 +202,6 @@ var sql = 'select * from hana where time >= ? and time <= DATE_ADD(?, INTERVAL 1
 
 DATE_ADD(#1, #2) 는 #1 기간에 #2 기간만큼을 더 더해주는 함수이다.
 
-기간 내의 검색을 할 때 마지막 날짜는 포함해주지 않아서 mariadb에서 참조하여 마지막 날짜에 하루를 더 더해주도록 하였다.
+기간 내의 검색을 할 때 쿼리식에서 '<=' 해주었는데 마지막 날짜가 포함해주지 않아서 mariadb에서 참조한 함수로 마지막 날짜에 하루를 더 더해주도록 하였다.
 
 https://mariadb.com/kb/en/library/date_add/
