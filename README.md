@@ -190,7 +190,7 @@ d 는 숫자 문자를 일컫으며 *은 0이상 연속으로 반복되는 앞�
 
 g 는 Global로 'g' 를 사용하지 않으면 일치하는 것 하나만 찾아주고 끝나지만 g를 해줌으로써 일치하는 모든 것을 찾게 된다.
 
-* 사용에 대한 예로써
+*(별) 사용에 대한 예로써
 
 "aaa".match(RegExp("a*", "g")) 의 결과값은 0 이상이므로 null, ('aaa') 가 나오게 된다.
 
@@ -275,6 +275,7 @@ https://www.w3schools.com/sql/func_mysql_date_format.asp
     for (var key in results) {
       NOs.push(results[key]["NO"]);
     }
+ </script>
 
 코드가 꽤 긴데 처음에 pad라는 함수를 선언해준 것을 볼 수 있다. pad는 빈공간을 0으로 채워주는 함수이다.
 
