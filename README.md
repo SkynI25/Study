@@ -216,7 +216,7 @@ https://mariadb.com/kb/en/library/date_add/
 
 results["<%=datas[i].time%>".match(new RegExp("\\d*-\\d*-\\d*", "g"))[0]]["<%=datas[i].result%>"] += 1;
 
-
+(0123)
 sql 데이터를 chart.js 를 이용하여 나타내는 방법
 
 정말 어려운 부분이고 까다로운 부분이었는데, 이 또한 동기가 도와주어서 해결할 수 있었다.
@@ -233,7 +233,7 @@ date_format으로 해주어 년-월-일 형태로 나타나게 해주었고 이 
 
 https://www.w3schools.com/sql/func_mysql_date_format.asp
 
-<script>
+  <script>
     function pad(n, width, z) {
       z = z || '0';
       n = n + '';
@@ -275,7 +275,48 @@ https://www.w3schools.com/sql/func_mysql_date_format.asp
     for (var key in results) {
       NOs.push(results[key]["NO"]);
     }
- </script>
+
+    var mixedChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          // OK
+          label: 'OK',
+          data: OKs,
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#007bff',
+          borderWidth: 4,
+          pointBackgroundColor: '#007bff'
+        },
+          // NO
+        {
+          label: 'NO',
+          data: NOs,
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#ff3400',
+          borderWidth: 4,
+          pointBackgroundColor: '#ff3400',
+          type: 'line'
+        }],
+        labels: Object.keys(results)
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        legend: {
+          display: true
+        }
+      }
+    });
+  </script>
+
 
 코드가 꽤 긴데 처음에 pad라는 함수를 선언해준 것을 볼 수 있다. pad는 빈공간을 0으로 채워주는 함수이다.
 
