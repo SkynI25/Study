@@ -17,7 +17,7 @@ date_format으로 해주어 년-월-일 형태로 나타나게 해주었고 이 
 
 https://www.w3schools.com/sql/func_mysql_date_format.asp
 
-```Javascript
+```
 <script>
     function pad(n, width, z) {
       z = z || '0';
@@ -130,7 +130,7 @@ http://www.chartjs.org/docs/latest/
 전체적으로 fullCalendar라는 javascript event calendar에 전달받은 sql데이터의 날짜별 갯수를 출력해준다.
 소스는 아래와 같다.
 
-<code>
+```
   <!-- Calendar -->
   <script>
 
@@ -210,7 +210,7 @@ http://www.chartjs.org/docs/latest/
 
 </style>
 
-</code>
+```
 
 pad함수는 chart를 그릴 때 하던 것과 비슷하다.
 마찬가지로 results 오브젝트를 생성하여준다. chart는 기간을 설정하여 그 기간내에 해당하는 데이터를 가져와 보여주었다.
