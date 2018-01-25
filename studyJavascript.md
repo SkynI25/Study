@@ -212,47 +212,51 @@ http://www.chartjs.org/docs/latest/
 
 ```
 
-pad함수는 chart를 그릴 때 하던 것과 비슷하다.
-마찬가지로 results 오브젝트를 생성하여준다. chart는 기간을 설정하여 그 기간내에 해당하는 데이터를 가져와 보여주었다.
-달력도 이와 비슷하게 첫 일과 끝 일을 현재 달을 기준으로 생성하여 이 날짜들 간에 해당하는 데이터를 가져와 보여준다.
-(ex. start = 1, end = 31)
-today는 현재 달의 첫 일과 끝 일을 구하기 위해 생성한 날짜 변수이다.
-start와 end는 new Date(0)으로 생성해주었는데 today처럼 new Date() 로 해주지 않은 이유는 시분초를 일치시키기 위해서이다.
-new Date() 하게 되면 입력한 그 순간의 시간이 들어오게 되므로 start와 end를 비교할 때 시분초에서 차이가 발생하게 된다.
-그리하여 1초 차이로 이 후에 나올 while(start < end) 구간에서 end를 포함시켜 오류를 발생시킬 여지가 있으므로
-new Date(0)으로 하여 시분초를 일치시켜주었다. (new Date(0) == Thu Jan 01 1970 09:00:00 GMT+0900 (대한민국 표준시))
+pad함수는 chart를 그릴 때 하던 것과 비슷하다. <br>
+마찬가지로 results 오브젝트를 생성하여준다. chart는 기간을 설정하여 그 기간내에 해당하는 데이터를 가져와 보여주었다.<br>
+달력도 이와 비슷하게 첫 일과 끝 일을 현재 달을 기준으로 생성하여 이 날짜들 간에 해당하는 데이터를 가져와 보여준다.<br>
+(ex. start = 1, end = 31)<br>
+today는 현재 달의 첫 일과 끝 일을 구하기 위해 생성한 날짜 변수이다.<br>
+start와 end는 new Date(0)으로 생성해주었는데 today처럼 new Date() 로 해주지 않은 이유는 시분초를 일치시키기 위해서이다.<br>
+new Date() 하게 되면 입력한 그 순간의 시간이 들어오게 되므로 start와 end를 비교할 때 시분초에서 차이가 발생하게 된다.<br>
+그리하여 1초 차이로 이 후에 나올 while(start < end) 구간에서 end를 포함시켜 오류를 발생시킬 여지가 있으므로<br>
+new Date(0)으로 하여 시분초를 일치시켜주었다. (new Date(0) == Thu Jan 01 1970 09:00:00 GMT+0900 (대한민국 표준시))<br>
 
-이 후 setFullYear를 이용하여 start와 end의 날짜를 설정해준다. start와 end는 1월을 기준으로 2018-01-01, 2018-02-01로 각각 생성이 된다.
-end는  end.setFullYear(today.getFullYear(), today.getMonth() + 1, 1); 과 같이 설정해주어 2018-02-01 값이 된다.
-이 후 while(start < end)를 통해 2월 1일 전 일인 1월 31일까지 처리가 된다.
-str를 start 날짜의 년월일을 받아 2018-01-01 과 같은 형식으로 선언해주었다.
-그리고 results[str] = {}; 로 results[str]을 초기화를 시켜주었고
-results[str]["OK"] = 0; results[str]["NO"] = 0; 로 OK와 NO를 받을 오브젝트 프로퍼티를 초기화 해주었다.
-이 후 start.setTime(start.getTime() + 86400000); 작업으로 하루 씩 더해준다. 86400000는 하루를 밀리초로 환산한 값이다.
-이 후 for문으로 데이터의 갯수만큼 반복을 하며 results 오브젝트에 1을 더해주게 된다.
-그리고 events 라는 오브젝트 배열을 생성해주고 fullCalendar 문서에 정의된 형식에 따라 데이터를 넣어주었다.
-https://fullcalendar.io/docs/event_data/events_array/
+이 후 setFullYear를 이용하여 start와 end의 날짜를 설정해준다. start와 end는 1월을 기준으로 2018-01-01, 2018-02-01로 각각 생성이 된다.<br>
+end는  end.setFullYear(today.getFullYear(), today.getMonth() + 1, 1); 과 같이 설정해주어 2018-02-01 값이 된다.<br>
+이 후 while(start < end)를 통해 2월 1일 전 일인 1월 31일까지 처리가 된다.<br>
+str를 start 날짜의 년월일을 받아 2018-01-01 과 같은 형식으로 선언해주었다.<br>
+그리고 results[str] = {}; 로 results[str]을 초기화를 시켜주었고<br>
+results[str]["OK"] = 0; results[str]["NO"] = 0; 로 OK와 NO를 받을 오브젝트 프로퍼티를 초기화 해주었다.<br>
+이 후 start.setTime(start.getTime() + 86400000); 작업으로 하루 씩 더해준다. 86400000는 하루를 밀리초로 환산한 값이다.<br>
+이 후 for문으로 데이터의 갯수만큼 반복을 하며 results 오브젝트에 1을 더해주게 된다.<br>
+그리고 events 라는 오브젝트 배열을 생성해주고 fullCalendar 문서에 정의된 형식에 따라 데이터를 넣어주었다.<br>
+https://fullcalendar.io/docs/event_data/events_array/<br>
 
+```
 $('#calendar').fullCalendar({
     events: [
         {
             title  : 'event1',
             start  : '2010-01-01'
         },
+```
+문서에 정의된 배열형태로의 이벤트는 위와 같다. <br>
 
-문서에 정의된 배열형태로의 이벤트는 위와 같다.
-
-여기서 for(var date in results) 루프를 반복하며 results 오브젝트에 있는 데이터를 events 오브젝트 배열에 다음과 같이 push 해주었다.
+여기서 for(var date in results) 루프를 반복하며 results 오브젝트에 있는 데이터를 events 오브젝트 배열에 다음과 같이 push 해주었다. <br>
+```
 events.push({
         title: 'OK : ' + results[date]['OK'],
         color : '#ffffff',
         textColor : '#000000',
         start: date
       });
-title은 표시될 이름으로 OK와 NO의 갯수를 표현해주기 위해 title: 'OK : ' + results[date]['OK'] 와 같이 해주었다.
-그리고 start(날짜) 값은 for문의 date값을 지정해주었다.
-이와 같은 작업으로 문서에 정의된 형식에 맞게 event 오브젝트 배열을 만들어주었고 그대로 fullCalendar 함수에 만들어준 event 오브젝트를 대입하여
-날짜별로 데이터들이 뜨도록 만들 수 있었다. 그리고 editable: false 로 해줌으로써 drag event가 발동하지 않도록 해주었다.
-이와 같이 javascript를 응용하고 원하는 방식으로 구현하는 것은 javascript를 제대로 이해하고 있어야지 가능하다고 생각이 들었다. 
-node.js 를 공부를 끝내고 javascript도 다시 공부해야겠다는 생각을 하게 되었다.
+```
+
+title은 표시될 이름으로 OK와 NO의 갯수를 표현해주기 위해 title: 'OK : ' + results[date]['OK'] 와 같이 해주었다. <br>
+그리고 start(날짜) 값은 for문의 date값을 지정해주었다.<br>
+이와 같은 작업으로 문서에 정의된 형식에 맞게 event 오브젝트 배열을 만들어주었고 그대로 fullCalendar 함수에 만들어준 event 오브젝트를 대입하여<br>
+날짜별로 데이터들이 뜨도록 만들 수 있었다. 그리고 editable: false 로 해줌으로써 drag event가 발동하지 않도록 해주었다.<br>
+이와 같이 javascript를 응용하고 원하는 방식으로 구현하는 것은 javascript를 제대로 이해하고 있어야지 가능하다고 생각이 들었다. <br>
+node.js 를 공부를 끝내고 javascript도 다시 공부해야겠다는 생각을 하게 되었다.<br>
 
