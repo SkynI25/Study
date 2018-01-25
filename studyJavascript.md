@@ -123,9 +123,9 @@ http://www.chartjs.org/docs/latest/
 
 그리고 ticks : {beginAtZero : true}로 해주어 0부터 시작할 수 있게하였고 legend : { display : true, }로 하여 라벨을 표시하게 하였다.
 
-(0125)
+(0125) <br>
 이번에는 달력에 날짜별로 OK와 NO의 갯수를 출력하는 작업을 하였다. 이 역시 동기가 도와주어서 잘 진행할 수 있었다. <br>
-작업을 하면 할수록 javascript를 다시 공부해서 메소드에 대한 공부를 한번 해야겠다는 생각이 든다. 아래와 같이 한 작업은 모두<br>
+작업을 하면 할수록 javascript를 다시 공부해서 메소드에 대한 공부를 한번 해야겠다는 생각이 든다. <br>아래와 같이 한 작업은 모두 
 문서를 참고하여 js에서 받아들일 수 있도록 변형해주는 작업이기 때문이다.<br>
 전체적으로 fullCalendar라는 javascript event calendar에 전달받은 sql데이터의 날짜별 갯수를 출력해준다.<br>
 소스는 아래와 같다.<br>
