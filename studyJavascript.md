@@ -260,3 +260,127 @@ title은 표시될 이름으로 OK와 NO의 갯수를 표현해주기 위해 tit
 이와 같이 javascript를 응용하고 원하는 방식으로 구현하는 것은 javascript를 제대로 이해하고 있어야지 가능하다고 생각이 들었다. <br>
 node.js 를 공부를 끝내고 javascript도 다시 공부해야겠다는 생각을 하게 되었다.<br>
 
+(0130)<br>
+달력에서 날짜를 클릭했을 때 그 날의 데이터가 모달형식으로 뜨면서 차트 데이터를 보여주는 것<br>
+https://getbootstrap.com/docs/4.0/components/modal/<br>
+
+이번 작업은 기간을 정해서 chart 라이브러리를 이용해 보여주었던 자료를 응용하여 만든 것으로<br>
+
+특정 일을 클릭하면 dayClick 이벤트가 실행되면서 특정 일에 대한 date를 서버에 post로 전달하고 서버는<br>
+
+이 데이터를 post로 받아 처리한다. 이 때 데이터를 date를 처리할 때 하루만 지정해서 받는 문법이 mariadb에서는<br>
+
+존재하는 것처럼 보이지 않았다. 그리하여 아래와 같이 하루 전날과 하루 다음 날 사이의 날짜의 날짜를 select하도록 하여<br>
+
+특정 일에 대한 데이터를 쿼리 할 수 있게 하였다.<br>
+
+var sql = 'select result, date_format(time, "%Y-%m-%d") as time from hana where time >= ? and time < DATE_ADD(?, INTERVAL 1 DAY)';
+
+달력에는 기본적으로 그 날에 result 값의 갯수가 표시 되어있다. (OK : 2, NO : 1) 그러나 0개로 표시되는 경우는 데이터가<br>
+
+존재하지 않는 경우 이므로 datas 가 존재하지 않을 때는 [0,1] 형태로 클라이언트에 보내주게 하였다.<br>
+
+만일 데이터가 있다면 daychart라는 클라이언트 페이지에 보내준다.<br>
+
+daychart 페이지는 chart를 표현한 index2 와 거의 유사하나 기간 데이터가 넘어오지 않고 [result,time]이 담긴 date만<br>
+
+넘어오므로 var start = "<%=date[0].time%>"; 이와 같이 받았다.<br>
+
+이 후 results 오브젝트에서 results[start]={}; 와 같이 해주어 results 오브젝트의 start 프로퍼티에 대한 값을 저장할 수 있도록<br>
+
+초기화 해주었고 OK와 NO 데이터를 받을 수 있도록 초기화 해주었다.<br>
+
+이 후 전달된 date 오브젝트의 개수만큼 반복을 하며 results[start][OK or NO] 데이터에 1씩 더해주었고 이를 chart로 표현해주었다.<br>
+
+바 형태로 표시해주었고 색깔은 chart.js 홈페이지를 참고하여 꾸몄다<br>
+
+이번작업은 날짜를 클릭했을 때 그 데이터가 post형식으로 서버로 보내주도록 형식을 꾸며주는 것이 어려웠다.<br>
+
+https://fullcalendar.io/docs/mouse/dayClick/<br>
+
+https://www.w3schools.com/jquery/ajax_post.asp<br>
+
+예시에는 단순히 asp로 보낸다고 되어 있어 잘 이해를 못하였는데, 이는 서버로 데이터를 보낸다는 뜻이다.<br>
+
+나의 경우는 node.js를 이용해 서버를 구현하고 express를 이용한 app.post('/~~~')와 같이 post 및 get방식으로 보내는<br>
+
+데이터를 처리하므로 $.post("/data/daychart", { 로 해주어 클릭하였을 때 해당 날짜에 대한 데이터를 보내줄 수 있었다.<br>
+
+그리고 이를 모달 형태로 뜨도록 하는 것도 어려웠다. 동기에게 도움을 요청하여 모달 형태로 띄워주려고 하였는데<br>
+
+동기도 이를 띄우는데 $(...).modal('show') is not a function 이라는 오류를 직면하면서 계속 해결을 하지 못하였다. <br>
+
+결국 자기가 만든 홈페이지에서 모달 형식을 이용한 html 코드를 그대로 붙여넣으니 위의 오류는 뜨지 않았지만 이제는 모달이 뜨질 않았다.<br>
+
+오류도 안뜨는데 모달이 뜨지 않아서 멘붕이 와있었는데 동기가 bootstrap.min.js 코드를 맨 마지막에 넣으니 modal이 보였다.<br>
+
+이러한 상태에서는 특정 일을 클릭하면 그 날에 대한 데이터가 차트 형식으로 보이나 연달아 일을 클릭하면 이전에 실행된 모달 html 코드와 중복이<br>
+
+되며 겹치는 현상이 일어났다. 이를 해결하기 위해선 독립적인 id를 부여해야지 중복이 되지 않는다는 동기의 조언을 참고하여
+
+동기가 홈페이지에서 사용한 코드를 참고하여 아래와 같이 작성하였다.<br> https://dong-gi.github.io/Study/Java/index.html<br>
+
+```
+var graph = new Set();
+    var idx = Math.floor((Math.random() * 1000) + 1);
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        dayClick: function(date, jsEvent, view) {
+          alert('Clicked on: ' + date.format());
+          $.post("/data/daychart", {
+              date : date.format()
+            },
+            function(data) {
+              showModal(data,idx);
+            });
+
+          $(this).css('background-color', 'red');
+        },
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: (today.getFullYear()) + "-" + pad((today.getMonth() + 1), 2) + "-" + pad(today.getDate(), 2),
+        navLinks: true, // can click day/week names to navigate views
+        editable: false,
+        eventLimit: true, // allow "more" link when too many events
+        events: events
+      });
+    });
+    function showModal(data,idx) {
+      if(!graph.has(idx)) {
+      $("body").append(
+        '<div id="graph-modal'+idx+'" class="modal code-modal" tabindex="-1" role="dialog">\
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">\
+                <div class="modal-content">\
+                    <div class="modal-header">\
+                        <span>\
+                            <h2 style="display: inline-block;" class="modal-title">Graph</h2>\
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+                                <span aria-hidden="true" style="color: black; font-size: 2em; font-weight: bold;">&times;</span>\
+                            </button>\
+                        </span>\
+                    </div>\
+                    <div class="modal-body">\
+                        <p>Modal body text goes here.</p>\
+                    </div>\
+                    <div class="modal-footer">\
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>');
+        graph.add(idx);
+      }
+       $("div#graph-modal" +idx+ " div.modal-body").html(data);
+       $("div#graph-modal"+idx).modal("show");
+    }
+```
+
+graph라는 set 자료형을 선언하고 idx라는 변수를 1~1000까지 random하게 만들어 이를 modal의 id에 추가하였고 마지막으론 graph set 자료형에<br>
+
+add 해주었다. 그리고 if(!graph.has(idx)) 와 같은 조건을 통해 같은 id가 있는지 검사를 하고 없으면 차트 html를 모달의 body에 append 할 수 있도록 해주었다.<br>
+
+https://www.w3schools.com/jsref/jsref_random.asp<br>
+
