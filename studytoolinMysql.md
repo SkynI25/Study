@@ -223,7 +223,7 @@ key_buffer		= 16M
 !includedir /etc/mysql/conf.d/
 ```
 
-How to find my.cnf in linux OS :<br>
+- How to find my.cnf in linux OS :<br>
 https://extrememanual.net/10810<br>
 
 1. when you have to remove mariadb : <br>
