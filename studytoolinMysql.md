@@ -10,13 +10,11 @@ https://stackoverflow.com/questions/33703607/i-am-getting-unable-to-save-file-pe
 
 open 3306 port to accept external connection :<br>
 
-https://opentutorials.org/module/1175/7779<br>
+https://mariadb.com/kb/en/library/configuring-mariadb-for-remote-client-access/<br>
 
 http://moomini.tistory.com/68<br>
 
-remove mariadb :<br>
-
-http://elfinlas.tistory.com/367<br>
+https://opentutorials.org/module/1175/7779<br>
 
 install mariadb and setting db & table:<br>
 
@@ -227,3 +225,15 @@ key_buffer		= 16M
 
 How to find my.cnf in linux OS :<br>
 https://extrememanual.net/10810<br>
+
+1. when you have to remove mariadb : <br>
+https://askubuntu.com/questions/806107/remove-mariadb-mysql-databases<br>
+
+2. and reinstall mariadb : <br>
+
+https://downloads.mariadb.org/mariadb/repositories/#mirror=kaist&distro=Ubuntu&distro_release=xenial--ubuntu_xenial&version=10.2
+
+3. and if you want to allow external access follow-up below URLs: <br>
+
+a) https://mariadb.com/kb/en/library/configuring-mariadb-for-remote-client-access/<br>
+b) http://moomini.tistory.com/68<br>
