@@ -384,3 +384,94 @@ add 해주었다. 그리고 if(!graph.has(idx)) 와 같은 조건을 통해 같�
 
 https://www.w3schools.com/jsref/jsref_random.asp<br>
 
+(0201)<br>
+
+이번에는 위에 랜덤을 통해 id를 생성했던 코드를 수정하여 작성하였다.<br>
+
+```
+    var graph = new Set();
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+          dayClick: function(date, jsEvent, view) {
+            if (!graph.has(date.format())) {
+              $.post("/data/daychart", {
+                  date: date.format()
+                },
+                function(data) {
+                  $("body").append(
+                    '<div id="graph-modal' + date.format() +
+                    '" class="modal code-modal" tabindex="-1" role="dialog">\
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">\
+                        <div class="modal-content">\
+                            <div class="modal-header">\
+                                <span>\
+                                    <h2 style="display: inline-block;" class="modal-title">Graph</h2>\
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+                                        <span aria-hidden="true" style="color: black; font-size: 2em; font-weight: bold;">&times;</span>\
+                                    </button>\
+                                </span>\
+                            </div>\
+                            <div class="modal-body">\
+                                <p>Modal body text goes here.</p>\
+                            </div>\
+                            <div class="modal-footer">\
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>'
+                  );
+                  graph.add(date.format());
+                  $("div#graph-modal" + date.format() + " div.modal-body").html(data);
+                  $("div#graph-modal" + date.format() + " div.modal-body canvas").attr('id', 'chart' + date.format());
+                  showModal(date.format());
+                });
+            } else {
+              showModal(date.format());
+          }
+          $(this).css('background-color', 'red');
+        },
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: (today.getFullYear()) + "-" + pad((today.getMonth() + 1), 2) + "-" + pad(today.getDate(), 2),
+        navLinks: true, // can click day/week names to navigate views
+        editable: false,
+        eventLimit: true, // allow "more" link when too many events
+        events: events
+      });
+    });
+
+    function showModal(idx) {
+      $("div#graph-modal" + idx).modal("show");
+    }
+  </script>
+```
+
+id를 랜덤함수를 이용하여 생성하는 부분을 지우고 그 대신 클릭한 날짜의 숫자(2018-01-31)을 모달의 id에 덧붙였다.<br>
+
+그리고 이전에는 달력의 날짜를 클릭을 할 때 마다 post가 보내지는 비효율적인 방식으로 작성이 되어 있어서 이 부분을<br>
+
+set 데이터 객체를 만들고 여기에 데이터가 있는지 has 함수를 이용해 확인을 하고 없으면 그 때 post로 데이터를 보내도록<br>
+
+하였다. 또 set 객체를 사용하는 이유는 중복을 없애기 위해서 인데 보통 set 자료형을 생각하면<br>
+
+set = {1,1,1,1,1} 일 경우 set = {1} 과 같이 된다. 여기서 적용할 때는 처음 클릭할 때는 해당 날짜의 데이터를<br>
+
+모달의 바디에 append 하여 보여준다. 이후 같은 날짜를 연속해서 클릭하게 되는 경우에는 이미 이전에 클릭하여<br>
+
+set 데이터 객체에 저장된 자료를 가지고 있으므로 그냥 showModal을 해준다.<br>
+
+이미 이전에 클릭해서 가지고 있으니까 다시 append 할 필요없이 보여주면 되는 것이다.<br>
+
+이 때 else { showModal(data.format()) } 처리를 해주지 않으면 같은 날짜를 연속해서 클릭했을 때 모달창이 뜨지 않기 때문에<br>
+
+이와 같이 처리를 해주었다. 그리고 데이터가 1월에 한정되어 있었고 데이터가 뜨는 것이 현재 시간을 기준으로 그 달의 데이터들만<br>
+
+뜨도록 처리했기 때문에 지난달의 데이터를 볼 수 없었고 오늘과 같이 2월달이 되었을 때 2월달 데이터가 없으니 이전달 데이터를 가져오는데<br>
+
+오류가 떴다. 그리하여 start.setFullYear(today.getFullYear()-1, today.getMonth(), 1); 처럼 getFullYear-1을 해주어 1년 이전의 데이터들도<br>
+
+띄우도록 하니 오류가 없어졌다.<br>
