@@ -1,6 +1,58 @@
+(0122)<br>
+javascript에서 달력 Ui를 고를 때 아주 좋은 싸이트를 찾았다<br>
+
+http://www.daterangepicker.com/
+
+꽤 많은 종류의 달력들이 있고 심지어 범위 지정이 가능한 Ui도 있어 많이 유용하다
+
+위의 Ui를 통해 날짜를 검색해서 데이터를 띄울 때 post 방식으로 데이터를 전달받았지만
+
+형식이 달라 이를 쿼리 검색식으로 추려내는 것이 어려웠다.
+
+많은 자료를 찾아보았지만 동기가 정규식을 이용하여 아래와 같이 해결해주었다.
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D
+
+var time = req.body.time;
+var dates = time.match(new RegExp("\\d*-\\d*-\\d*", "g")); <!-- RegExp는 정규표현식 객체이다 --> 
+
+d 는 숫자 문자를 일컫으며 *은 0이상 연속으로 반복되는 앞선 문자를 찾게 해준다.
+
+g 는 Global로 'g' 를 사용하지 않으면 일치하는 것 하나만 찾아주고 끝나지만 g를 해줌으로써 일치하는 모든 것을 찾게 된다.
+
+*(별) 사용에 대한 예로써
+
+"aaa".match(RegExp("a*", "g")) 의 결과값은 0 이상이므로 null, ('aaa') 가 나오게 된다.
+
+body 값의 time에 input 박스안에 있는 값들이 날려오고
+
+time.match(new RegExp("\\d*-\\d*-\\d*", "g")); 식을 통해 년월일을 가져오게 된다
+
+RegExp 내용안의 형식과 같은 값을 추려내준다. 이 때 달력 Ui에서 년월일은 '월, 일, 년' 이었기에 '년-월-일'로 나오도록 바꿔주었다.
+
+값이 잘 추려졌고 기간 내의 값을 검색하기 위해 mariadb에서 date를 내의 값을 검색하는 방법을 찾아서 아래와 같이 하였다.
+
+https://mariadb.com/kb/en/library/select-based-upon-date/
+
+var sql = 'select * from hana where time >= ? and time <= DATE_ADD(?, INTERVAL 1 DAY)';
+
+이 때 두번 째 치환자 앞 뒤로 함수들이 붙어있는데
+
+DATE_ADD(#1, #2) 는 #1 기간에 #2 기간만큼을 더 더해주는 함수이다.
+
+기간 내의 검색을 할 때 쿼리식에서 '<=' 해주었는데 마지막 날짜가 포함해주지 않아서 mariadb에서 참조한 함수로 마지막 날짜에 하루를 더 더해주도록 하였다.
+
+https://mariadb.com/kb/en/library/date_add/
+
 results["<%=datas[i].time%>".match(new RegExp("\\d*-\\d*-\\d*", "g"))[0]]["<%=datas[i].result%>"] += 1;
 
-#(0123)
+배경그림 선택할 때 유용한 싸이트 :<br>
+
+http://www.colorhexa.com/007bff<br>
+
+results["<%=datas[i].time%>".match(new RegExp("\\d*-\\d*-\\d*", "g"))[0]]["<%=datas[i].result%>"] += 1;<br>
+
+(0123)<br>
 sql 데이터를 chart.js 를 이용하여 나타내는 방법
 
 정말 어려운 부분이고 까다로운 부분이었는데, 이 또한 동기가 도와주어서 해결할 수 있었다.
