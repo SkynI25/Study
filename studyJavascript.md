@@ -1,4 +1,47 @@
-(0122)<br>
+HTML Table in Jade Templatee :<br>
+
+https://stackoverflow.com/questions/28187290/how-rotate-html-table-using-jade-template-node-express-jade
+
+Useful Homepage UI stuff :<br>
+
+https://semantic-ui.com/modules/dropdown.html#search-dropdown
+
+>어제와 오늘 헤매다가 해결한 것들 정리(20180118)
+
+어제는 이미지를 클릭했을 때 그 이미지를 띄우지 못해서 애를 먹었다
+
+이는 app.use(express.static('./')); 에서 기본 경로를 ./(현재 디렉토리)로 설정하면서 해결하였다.
+
+그리고 검색한 자료를 띄우기 에서는
+
+redirect 를 사용하지 않고 검색한 자료로 view2로 render 하여 띄워주었다.
+
+view2의 form에서 'data/list'로 post 방식으로 자료를 보내주고
+
+app.post('/data/list')로 데이터를 받아 입력한 자료를 받아 select * from hana where=?
+
+로 치환자의 값으로 form 에서 보낸 데이터를 받아 select 검색이 되도록 하였다.<br>
+
+Display Calendar by using jQuery :<br>
+
+http://www.nextree.co.kr/p9887/
+
+To hide element in HTML :<br>
+
+<table>
+  <tr><th>Test Table</th><tr>
+  <tbody style="display:none">
+    <tr><td>123456789</td><tr>
+    <tr><td>123456789</td><tr>
+    <tr><td>123456789</td><tr>
+  </tbody>
+</table>
+
+https://stackoverflow.com/questions/6910349/hiding-table-data-using-div-style-displaynone
+
+
+>(0122)
+
 javascript에서 달력 Ui를 고를 때 아주 좋은 싸이트를 찾았다<br>
 
 http://www.daterangepicker.com/
