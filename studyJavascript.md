@@ -27,7 +27,7 @@ Display Calendar by using jQuery :<br>
 http://www.nextree.co.kr/p9887/
 
 To hide element in HTML :<br>
-
+```
 <table>
   <tr><th>Test Table</th><tr>
   <tbody style="display:none">
@@ -36,6 +36,7 @@ To hide element in HTML :<br>
     <tr><td>123456789</td><tr>
   </tbody>
 </table>
+```
 
 https://stackoverflow.com/questions/6910349/hiding-table-data-using-div-style-displaynone
 
