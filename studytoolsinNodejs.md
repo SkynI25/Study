@@ -1,11 +1,11 @@
-one of the way to store file path to DB :<br>
+>one of the way to store file path to DB :<br>
 
 https://stackoverflow.com/questions/20208878/storing-images-in-server-using-expressjs<br>
 
 
-(20180112)<br>
->와...하루동안 삽질했는데 npm 모듈 설치하니까 에러가 해결됬다..
-
+>(20180112)<br>
+와...하루동안 삽질했는데 npm 모듈 설치하니까 에러가 해결됬다..
+<
 npm install mysql
 
 해주니 해결이 됬다.
