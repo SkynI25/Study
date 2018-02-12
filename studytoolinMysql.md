@@ -1,3 +1,13 @@
+MySQL 사용자 생성 및 삭제 문법 :<br>
+
+http://damduc.tistory.com/4
+
+http://ourcstory.tistory.com/45
+
+MySQL 테이블 생성시 DATETIME 타입에 DEFAULT로 현재 시간 입력하기 :<br>
+
+http://jsonobject.tistory.com/122
+
 management of user :<br>
 
 http://link2me.tistory.com/431<br>
