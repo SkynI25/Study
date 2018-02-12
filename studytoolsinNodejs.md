@@ -1,9 +1,8 @@
->one of the way to store file path to DB :<br>
+one of the way to store file path to DB :<br>
 
 https://stackoverflow.com/questions/20208878/storing-images-in-server-using-expressjs<br>
 
-
->(20180112)<br>
+# (20180112)
 
 와...하루동안 삽질했는데 npm 모듈 설치하니까 에러가 해결됬다..
 
@@ -74,3 +73,7 @@ mariadb 를 설치하니 별개의 npm을 설치해줘야한다는 생각에 저
 당연히 mysql 과 연결하려면 저 모듈을 설치해줘야 한다..설치를 진행하면서 전체적인 과정을 잘 정리하지 못하여 생긴 문제이다.
 
 앞으로는 설치해야하는 모듈들이 많을 때는 체크를 해나가며 단계적으로 해나가도록 해야겠다.
+
+Useful code for developing Node.js :
+
+http://blog.kichul.co.kr/2017/01/27/2017-03-27-node-js-notes/
