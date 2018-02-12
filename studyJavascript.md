@@ -6,7 +6,9 @@ Useful Homepage UI stuff :<br>
 
 https://semantic-ui.com/modules/dropdown.html#search-dropdown
 
->어제와 오늘 헤매다가 해결한 것들 정리(20180118)
+# (20180118)
+
+어제와 오늘 헤매다가 해결한 것들 정리<br>
 
 어제는 이미지를 클릭했을 때 그 이미지를 띄우지 못해서 애를 먹었다
 
@@ -41,7 +43,7 @@ To hide element in HTML :<br>
 https://stackoverflow.com/questions/6910349/hiding-table-data-using-div-style-displaynone
 
 
->(0122)
+# (20180122)
 
 javascript에서 달력 Ui를 고를 때 아주 좋은 싸이트를 찾았다<br>
 
@@ -96,7 +98,8 @@ http://www.colorhexa.com/007bff<br>
 
 results["<%=datas[i].time%>".match(new RegExp("\\d*-\\d*-\\d*", "g"))[0]]["<%=datas[i].result%>"] += 1;<br>
 
-(0123)<br>
+# (20180123)
+
 sql 데이터를 chart.js 를 이용하여 나타내는 방법
 
 정말 어려운 부분이고 까다로운 부분이었는데, 이 또한 동기가 도와주어서 해결할 수 있었다.
@@ -219,7 +222,8 @@ http://www.chartjs.org/docs/latest/
 
 그리고 ticks : {beginAtZero : true}로 해주어 0부터 시작할 수 있게하였고 legend : { display : true, }로 하여 라벨을 표시하게 하였다.
 
-(0125) <br>
+# (20180125)
+
 이번에는 달력에 날짜별로 OK와 NO의 갯수를 출력하는 작업을 하였다. 이 역시 동기가 도와주어서 잘 진행할 수 있었다. <br>
 작업을 하면 할수록 javascript를 다시 공부해서 메소드에 대한 공부를 한번 해야겠다는 생각이 든다. <br>아래와 같이 한 작업은 모두 
 문서를 참고하여 js에서 받아들일 수 있도록 변형해주는 작업이기 때문이다.<br>
@@ -356,7 +360,8 @@ title은 표시될 이름으로 OK와 NO의 갯수를 표현해주기 위해 tit
 이와 같이 javascript를 응용하고 원하는 방식으로 구현하는 것은 javascript를 제대로 이해하고 있어야지 가능하다고 생각이 들었다. <br>
 node.js 를 공부를 끝내고 javascript도 다시 공부해야겠다는 생각을 하게 되었다.<br>
 
-(0130)<br>
+# (20180130)
+
 달력에서 날짜를 클릭했을 때 그 날의 데이터가 모달형식으로 뜨면서 차트 데이터를 보여주는 것<br>
 https://getbootstrap.com/docs/4.0/components/modal/<br>
 
@@ -480,7 +485,7 @@ add 해주었다. 그리고 if(!graph.has(idx)) 와 같은 조건을 통해 같�
 
 https://www.w3schools.com/jsref/jsref_random.asp<br>
 
-(0201)<br>
+# (20180201)
 
 이번에는 위에 랜덤을 통해 id를 생성했던 코드를 수정하여 작성하였다.<br>
 
