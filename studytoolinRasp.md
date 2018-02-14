@@ -9,3 +9,37 @@ http://zelkun.tistory.com/entry/018-Raspberry-Pi-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%
 How to install Raspberry OS :<br>
 
 https://brunch.co.kr/@topasvga/52<br>
+
+# 20180214
+
+설 전까지도 열일!! 아 아니..열졸!!<br>
+
+라즈베리 파이와 초음파 센서를 연결해서 쓰레기통의 높이를 측정하였다.<br>
+
+초음파센서와 라즈베리파이를 연결하여 거리를 측정할 때 참고한 사이트들, 두 개의 사이트 모두 회로도와 코드가 깔끔하게 나와있다.<br>
+
+https://codefooo.gitbooks.io/raspberry-experiments/content/%EC%8B%A4%ED%97%988-%EC%B4%88%EC%9D%8C%ED%8C%8C-%EA%B1%B0%EB%A6%AC-%EC%84%BC%EC%84%9C.html
+
+https://m.blog.naver.com/PostView.nhn?blogId=roboholic84&logNo=220319850312&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+
+그리고 라파에서<br>
+
+```
+GPIO.output(pin_trigger, GPIO.HIGH) # shoot the signal for 10 us
+time.sleep(.00001) # 10 us
+GPIO.output(pin_trigger, GPIO.LOW)
+```
+
+일 때 sleep(.5)로 하면 1초 마다 찍히는 것을 알 수 있었다.<br>
+
+그리고 센서와 파이 코블러, 저항을 연결할 때 사용해야 할 저항 값을 확인할 때 아래 사이트들을 참고하였다.<br>
+
+http://programfrall.tistory.com/65
+
+https://m.blog.naver.com/PostView.nhn?blogId=ansdbtls4067&logNo=220625603453&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+
+이 후 라파에서 작성한 파이썬 코드를 실행할 때는 파이썬 코드가 위치한 디렉토리에서 sudo python 파이썬파일.py 을 해주면 된다.<br>
+
+라파에서 파이썬코드 실행하는 방법에 대해 참고한 사이트 :<br>
+
+https://m.blog.naver.com/PostView.nhn?blogId=post_human&logNo=220047845238&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
