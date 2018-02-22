@@ -576,3 +576,72 @@ set 데이터 객체에 저장된 자료를 가지고 있으므로 그냥 showMo
 오류가 떴다. 그리하여 start.setFullYear(today.getFullYear()-1, today.getMonth(), 1); 처럼 getFullYear-1을 해주어 1년 이전의 데이터들도<br>
 
 띄우도록 하니 오류가 없어졌다.<br>
+
+# 20180222
+
+오늘은 졸작의 일련으로 달력에 특정 쓰레기통의 일간 적재량을 보여주도록 하는 작업을 하였다.<br>
+
+크게 달라진 부분은 없고 프로퍼티의 쌍이 어떻게 달라졌는지에 유의하면 된다.<br>
+
+지난번에는 OK 와 NO의 값을 세야 했으나 이번에는 height를 그대로 표시해주면 된다.<br>
+
+
+
+```
+  <script>
+    function pad(n, width, z) {
+      z = z || '0';
+      n = n + '';
+      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+
+    var ctx = document.getElementById("myChart");
+    var results = {};
+    <%
+     for(var i = 0; i < date.length; ++i) {
+    %>
+        var garbageid = "<%=date[i].garbageid%>";
+        var time = "<%=date[i].time%>";
+        var height = parseInt("<%=date[i].height%>");
+        if(!(garbageid in results)) results[garbageid] = {}
+        results[garbageid][time] = height;
+    <%
+     }
+    %>
+    console.log(results);
+
+    var heights = [];
+    for (var key in results[garbageid]) {
+      heights.push(results[garbageid][key]);
+    }
+
+    var mixedChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'height',
+          data: heights,
+          lineTension: 0,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 0.2)',
+          borderWidth: 4,
+          pointBackgroundColor: 'rgba(54, 162, 235, 0.2)',
+          type: 'line'
+        }],
+        labels: Object.keys(results[garbageid])
+      },
+```
+
+data 의 length 만큼 반복을 하고 넘어온 data의 빈 오브젝트를 생성 후 <br>
+
+garbageid, time의 프로퍼티에 빈 객체를 생성 후 여기에 각 height 를 대입하였다. <br>
+
+이 후 height 배열을 생성 후 results[garbageid][time] 의 각 값을 time 별로 height 에 대입을 하였다.<br>
+
+이를 표현하면 아래와 같이 된다. key가 time 프로퍼티로서 반복되어 대입되는 부분이 조금 헷갈렸지만 지금은 이해하였다.<br>
+
+```
+for (var key in results[garbageid]) {
+      heights.push(results[garbageid][key]);
+    }
+```
