@@ -1,10 +1,10 @@
-# 20180301
+# 20180201
 
 지도에 여러개 오버레이를 표시하는게 잘 안된다. 지도에 여러개 오버레이를 표시하는게 잘 안된다.<br>
 클로저 부분에서 막히는 거 같은데 오버레이 표시가 안되면 인포윈도우로 표시해야 할 듯.
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures
 
-# 20180304
+# 20180204
 
 fullCalendar 라이브러리에서 임계점을 넘었을 때의 횟수를 표시해주려고 했는데 숫자가 뜨지 않고<br>
 
@@ -35,4 +35,18 @@ results[str] = 0;
 이 부분이 잘 적용이 안되었고 크게 의미가 없다고 여겨져 form문 내에서 button 을 클릭하면 해당 페이지로 이동하고 post Request를 하도록 해주었다.<br>
 
 또 마커의 좌표와 title을 DB에 저장해서 띄워주도록 할 예정이다.<br>
+
+# 20180206
+
+지도 화면에서 버튼을 눌러 post Request로 페이지 이동을 할 때 해당 페이지의 css 가 제대로 반영이 되지 않았다.<br>
+
+<link href="../public/dashboard.css" rel="stylesheet"> 와 같이 있으면 css가 반영이 안되었다. 경로문제인데<br>
+
+경로를 /public/dashboard.css 로 바꿔주니 해결이 되었다. 상대 경로의 참조루트를 설정해주기 위해 깃허브에 파일을 올려주는 식으로<br>
+
+하려고 하였는데 이 또한 제대로 되지 않았다. 한번 깃허브에 올렸을 때 실행이 될 수 있는 방법을 찾아봐야 겠다.<br>
+
+그리고 sql 문을 작성할 때 garbageid = '" + deviceId + "' 형식과 date_format(time, "%Y-%m-%d %HH") 을 같이 쓸 때 쌍따옴표 및 따옴표의 호환문제로<br>
+
+쿼리문 실행이 잘 되지 않는 문제가 있었는데 date_format의 "%Y-%m-%d %HH" 를 '%Y-%m-%d %HH' 와 같이 쌍따옴표를 따옴표로 바꿔주니 해결이 되었다.<br>
 
