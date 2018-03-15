@@ -43,3 +43,24 @@ https://m.blog.naver.com/PostView.nhn?blogId=ansdbtls4067&logNo=220625603453&pro
 라파에서 파이썬코드 실행하는 방법에 대해 참고한 사이트 :<br>
 
 https://m.blog.naver.com/PostView.nhn?blogId=post_human&logNo=220047845238&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+
+# 20180315
+만약 라파 OS를 설치했는데 No Wireless Interface Found 로 뜨고 어떤 설정을 변경해도 변함이 없이 연결이 안되면 어떻게 해야할까..<br>
+
+필자의 경우는 그냥 다시 포맷을 하였다(무식한 방법이 최고?)<br>
+
+포맷 후 처음에는 인터넷 연결 리스트가 비어 있으므로<br>
+
+sudo leafpad /etc/wpa_supplicant/wpa_supplicant.conf 로 하여 설정파일에 연결할 wifi 네트워크 정보를 입력해주고<br>
+
+```
+service networking restart
+```
+
+와 같이 해주어 리스타트를 해주면 해결이 되었다.<br>
+
+그리고 PEAP 방식의 wifi 를 연결해주고자 한다면 무선 wifi 동글을 쓰는게 확실하다.<br>
+
+파이3 wifi와 연결이 되는 공유기가 있고 안되는게 있기 때문에 안되는 경우는 동글을 쓰면 된다고 한다.<br>
+
+경험상으로도 필자가 연결하려는 교내 와이파이도 라파3 만 가지곤 연결이 안되고 무선 동글을 같이 써야지 연결이 되었다(이것만 가지고 몇일을 삽질함 ㅠ)<br>
