@@ -18,7 +18,7 @@ http://bluese05.tistory.com/37
 
 node.js 에선 어떻게 thread를 사용하는가?<br>
 
-: single thread, 비동기 작업.<br>
+> single thread, non-blocking I/O Model, 이벤트 기반 비동기 방식.
 
 https://qkraudghgh.github.io/node/2016/10/23/node-async.html
 
