@@ -13,3 +13,13 @@ http://bluese05.tistory.com/37
 이를 위해선 라파에서 보내주는 형식이 dict 이기 때문에 json으로 변환해줘야 했다.<br>
 
 그러나 서버에서 받은 형식을 보면 올바른 json 형태로 오지 않는다.<br>
+
+그리고 중요한 heads up..
+
+node.js 에선 어떻게 thread를 사용하는가?<br>
+
+: single thread, 비동기 작업.<br>
+
+https://qkraudghgh.github.io/node/2016/10/23/node-async.html
+
+http://www.nextree.co.kr/p7292/
