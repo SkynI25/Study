@@ -1,4 +1,4 @@
-# 20180316
+## 20180316
 
 파이썬에서 DB 접속해서 쿼리문 삽입 하는 방법 :
 
@@ -40,3 +40,5 @@ https://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/updating-f
 이는 멀티유저라는 것을 nodejs에서 처리를 해주므로 문제 없이 사용이 가능하다 서버의 포트가 64000이면 사용자들은 해당 포트로 들어와 분기가 된다<br>
 
 각각만의 request는 각각의 response 를 받는다<br>
+
+
