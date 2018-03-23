@@ -44,3 +44,14 @@ dict = { 'data' : ('a', 'b', 'c')} 와 같이 보내주었는데 서버에선 �
 어제 자기전 requests DOC 를 정독하면서 파이썬 3. 버전에서 돌리면 좋다는 것과 튜플로도 다양한 데이터를 보낼 수 있다는 것을 보고 이를 사용하였는데 바라던대로 문제가 잘 해결되어 너무 좋다 ㅠㅠ<br>
 
 그러면서 우리의 프로젝트의 방향에 대해서 다시 생각하게 되었다 나이스한 방법으로 개발하는 것도 좋지만 중요한 것은 하드웨어가 값을 측정해서 서버로 보내주는 것이므로..간단하더라도 동작하는 쪽으로 개발하는 것이 맞겠다고 생각하였다<br>
+
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/home/ubuntu/js/server_side_javascript/node_modules/mysql/lib/protocol/Protocol.js:113:13)
+    at Socket.<anonymous> (/home/ubuntu/js/server_side_javascript/node_modules/mysql/lib/Connection.js:109:28)
+    at emitNone (events.js:111:20)
+    at Socket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+Program node kitae_mysql.js exited with code 1
+
