@@ -43,3 +43,12 @@ max(stats, key=stats.get)
 어떤 원리로 해당 코드들이 딕셔너리에서 가장 큰 값을 가진 key를 반환해주는지에 대해선 이해가 알지못했으나 해당 부분을 구현할 수 있었다.<br>
 
 단 위와 같은 방법들은 한 가지 값만을 리턴한다. 만약 {'a' : 3000, 'b':3000} 과 같이 둘 다 최대값을 가졌을 때는 둘 중 하나만을 리턴한다.<br>
+
+
+## README 를 작성하는데 도움이 된 블로그
+
+http://codecooking.tistory.com/95
+
+https://techstory.shma.so/art-of-readme-cd19f86b0456
+
+http://brownbears.tistory.com/233
