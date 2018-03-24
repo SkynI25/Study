@@ -78,4 +78,12 @@ The java.net package in the Java platform provides a class, Socket, that impleme
 
 Additionally, java.net includes the ServerSocket class, which implements a socket that servers can use to listen for and accept connections to clients. This lesson shows you how to use the Socket and ServerSocket classes.
 
-If you are trying to connect to the Web, the URL class and related classes (URLConnection, URLEncoder) are probably more appropriate than the socket classes. In fact, URLs are a relatively high-level connection to the Web and use sockets as part of the underlying implementation. See Working with URLs for information about connecting to the Web via URLs.
+If you are trying to connect to the Web, the URL class and related classes (URLConnection, URLEncoder) are probably more appropriate than the socket classes. In fact, URLs are a relatively high-level connection to the Web and use sockets as part of the underlying implementation. See Working with URLs for information about connecting to the Web via URLs<br>
+
+출처 : https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html
+
+그나저나..왜 이미지 중앙 배치가 적용이 안되는거야 ㅎ ㅡ.ㅡ<br>
+
+https://nachoi.github.io/studynote/2017/11/23/Github-resize-image.html
+
+
