@@ -78,40 +78,25 @@ Program node kitae_mysql.js exited with code 1
 
 위의 오류는 DB 와 연결이 끊키기 때문에 발생하는 문제, 아마 nodejs로 웹 서버를 만들어 mysql 과 연결하면 다들 발생하는 문제라고 생각함<br>
 
-해결방법은 연결이 끊키는 오류를 제어하는 코드를 넣는것(말은 쉽다) 아래와 같은 코드를 넣으면 해결이 가능하다<br>
+해결방법은 모듈에서 제공하는 커넥션 풀링을 이용하는 것<br>
 
 ```
-var db_config = {
-  host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'example'
-};
+var mysql = require('mysql');
+var pool  = mysql.createPool(...);
 
-var connection;
+pool.getConnection(function(err, connection) {
+  // Use the connection
+  connection.query('SELECT something FROM sometable', function (error, results, fields) {
+    // And done with the connection.
+    connection.release();
 
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config); // Recreate the connection, since
-                                                  // the old one cannot be reused.
+    // Handle error after the release.
+    if (error) throw error;
 
-  connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }                                     // to avoid a hot loop, and to allow our node script to
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
+    // Don't use the connection here, it has been returned to the pool.
   });
-}
-
-handleDisconnect();
+});
 ```
 
 참고 : https://stackoverflow.com/questions/20210522/nodejs-mysql-error-connection-lost-the-server-closed-the-connection
+https://stackoverflow.com/questions/24445194/mysql-connection-error-using-node-js/25111836#25111836
