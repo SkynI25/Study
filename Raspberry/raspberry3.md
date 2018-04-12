@@ -38,3 +38,8 @@ sudo leafpad /home/pi/.profile
 따라서 파이썬 스크립트가 경우에 따라 제대로 실행되지 않는 결과가 나타날 수 있기 때문에 10초를 sleep 후에 파이썬 코드를 실행 시킨다.
 
 > http://youagain.tistory.com/5
+
+인터넷 재연결을 하기 위한 shell script를 짤 때 도움이 된 싸이트
+
+http://alexba.in/blog/2015/01/14/automatically-reconnecting-wifi-on-a-raspberrypi/
+
