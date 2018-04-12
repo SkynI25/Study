@@ -82,8 +82,5 @@ If you are trying to connect to the Web, the URL class and related classes (URLC
 
 출처 : https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html
 
-그나저나..왜 이미지 중앙 배치가 적용이 안되는거야 ㅎ ㅡ.ㅡ<br>
-
 https://nachoi.github.io/studynote/2017/11/23/Github-resize-image.html
-
 
