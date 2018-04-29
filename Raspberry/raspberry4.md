@@ -14,13 +14,3 @@ sudo crontab -e
 ```
 
 출처 : https://www.dexterindustries.com/howto/auto-run-python-programs-on-the-raspberry-pi/
-
-
-  SELECT sensordata.* FROM (
-  	SELECT MAX(x.id) as id, x.garbageid
-  	FROM sensordata x
-  		JOIN (SELECT DISTINCT garbageid FROM sensordata) y
-  		ON y.garbageid = x.garbageid
-  	GROUP BY x.garbageid
-  ) t, sensordata
-  WHERE t.id = sensordata.id
