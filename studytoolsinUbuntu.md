@@ -22,9 +22,7 @@ https://medium.com/ics-lab/%EC%9A%B0%EB%B6%84%ED%88%AC-ubuntu-%EB%A1%9C-%EA%B0%9
 
 http://blog.dalli.kr/archives/1414
 
-## 20180512
-
-우분투 boot 용량부족하다고 뜰 때 :
+## 우분투 boot 용량부족하다고 뜰 때 :
 
 먼저 아래 명령어를 입력해 boot 용량을 확인한다
 
