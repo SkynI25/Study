@@ -26,7 +26,7 @@ http://blog.dalli.kr/archives/1414
 
 먼저 아래 명령어를 입력해 boot 용량을 확인한다
 
-> $ u -sh /boot
+> $ du -sh /boot
 
 첫번째로 휴지통을 비워서 공간을 확보한다
 
